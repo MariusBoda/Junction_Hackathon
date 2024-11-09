@@ -36,6 +36,18 @@ if collection:
     scale_factor = 100
     bpy.ops.transform.resize(value=(scale_factor, scale_factor, scale_factor))
 
+    # Switch to Edit Mode
+    bpy.ops.object.mode_set(mode='EDIT')
+
+    # Select all vertices in Edit Mode
+    bpy.ops.mesh.select_all(action='SELECT')
+
+    # Extrude and move upwards by 3.5 units
+    bpy.ops.mesh.extrude_region_move(TRANSFORM_OT_translate={"value": (0, 0, 3.5)})
+
+    # Switch back to Object Mode
+    bpy.ops.object.mode_set(mode='OBJECT')
+
 # Save the result
 output_path = "/Users/marius/Documents/GitHub/Junction_Hackathon/Blender Output/output_file.blend"
 bpy.ops.wm.save_as_mainfile(filepath=output_path)
