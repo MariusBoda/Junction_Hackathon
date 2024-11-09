@@ -21,6 +21,8 @@ This project provides tools for converting 2D SVG floor maps into a 3D model and
 
 ## Demo Videos
 
+[Voice over Video](https://drive.google.com/file/d/1t6s4Di1beESPZgIF-SyoPk5uiOd2E-hh/view?usp=sharing)
+
 [Watch Demo Videos](https://drive.google.com/file/d/18aUhQWOFmRV8kD4NR1utztUxzUA4NuKR/view?usp=share_link)
 
 ## Requirements
