@@ -58,7 +58,7 @@ st.title("SVG to Blender Converter")
 st.write("Choose the directory with SVG files, select stroke widths, and run the conversion to Blender.")
 
 # Directory selection for SVG files
-input_dir = st.text_input("Enter directory path for SVG files", "/Users/marius/Documents/GitHub/Junction_Hackathon/Material to share/Site 2/svg_output")
+input_dir = st.text_input("Enter directory path for SVG files", "/Users/marius/Documents/GitHub/Junction_Hackathon/Material to share/Site 1/svg_output")
 
 # File upload for Elevator and Shaft 3D models
 elevator_gltf = st.file_uploader("Upload Elevator 3D model (GLTF)", type=["glb", "gltf"])
