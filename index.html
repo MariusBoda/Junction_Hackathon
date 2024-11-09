@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movable Objects in GLB Model</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+    </style>
+    <!-- Three.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
+    <!-- GLTFLoader for loading .glb files -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- OrbitControls for camera navigation -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/examples/js/controls/OrbitControls.js"></script>
+    <!-- DragControls for dragging objects -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/examples/js/controls/DragControls.js"></script>
+</head>
+<body>
+    <script>
+        // Basic Three.js setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add lighting for visibility
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        // Array to hold objects that can be dragged
+        let draggableObjects = [];
+
+        // Load GLB model
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+            '/Users/marius/Documents/GitHub/Junction_Hackathon/site1.glb',  // Replace with the path to your .glb file
+            function(gltf) {
+                const model = gltf.scene;
+                scene.add(model);
+
+                // Log the loaded GLB model structure to ensure it's loaded properly
+                console.log('Loaded GLB Model:', model);
+
+                // Traverse the model and log all objects
+                model.traverse((object) => {
+                    // Log the entire object and its properties for deep inspection
+                    console.log('Object:', object);
+                    
+                    // Log each object's name explicitly
+                    console.log('Object name:', object.name);
+                    
+                    // Add condition to check for objects by name and type (mesh)
+                    if (object.isMesh) {
+                        console.log('Found mesh:', object.name);
+                    }
+
+                    // Check if the mesh name matches the specific objects we want to drag
+                    if (object.isMesh && (object.name === 'Elevator_Model' || object.name === 'Shaft_Model')) {
+                        draggableObjects.push(object);
+                        console.log('Added draggable object:', object.name);
+                    }
+                });
+
+                // Position and scale adjustments, if needed
+                model.position.set(0, 0, 0);
+                model.scale.set(1, 1, 1);
+
+                // Position camera for initial view
+                camera.position.z = 10;
+            },
+            undefined,
+            function(error) {
+                console.error('Error loading model:', error);
+            }
+        );
+
+        // OrbitControls for scene navigation
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // DragControls for moving objects
+        let dragControls;
+        setTimeout(() => {
+            if (draggableObjects.length > 0) {
+                dragControls = new THREE.DragControls(draggableObjects, camera, renderer.domElement);
+
+                // Disable OrbitControls when dragging
+                dragControls.addEventListener('dragstart', function(event) {
+                    controls.enabled = false;
+                });
+                dragControls.addEventListener('dragend', function(event) {
+                    controls.enabled = true;
+                });
+            }
+        }, 1000); // Delay to allow model loading (adjust if needed)
+
+        // Render loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update(); // Update OrbitControls
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>

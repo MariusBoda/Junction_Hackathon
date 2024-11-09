@@ -1,7 +1,7 @@
 import os
 import subprocess
 import json
-import scripts.streamlit as st
+import scripts.lit as st
 from get_stroke_widths import get_stroke_widths
 from filter import process_all_svgs_in_folder
 

@@ -130,4 +130,3 @@ if 'widths' in st.session_state:
 # Reset button to clear selections
 if st.button("Reset Selections"):
     st.session_state.clear()  # Clears all session state variables (including selected widths)
-    st.experimental_set_query_params()
