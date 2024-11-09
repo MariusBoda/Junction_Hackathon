@@ -3,9 +3,11 @@
 The challenge
 
 Introduction
+
 Our industry is moving towards smarter maintenance with IoT and digital twins, allowing remote operations and real-time 3D visualizations of buildings, equipment, and people. But there’s a big challenge: many older buildings don’t have 3D models or BIMs, which limits the ability to improve maintenance and modernization. This gap slows us down and prevents us from making operations as efficient as they could be. Help us create a 3D BIM and digital twin of any building and its equipment to solve a massive industry-wide problem, drive smarter, faster maintenance and modernization, and open the door to fully connected, future-ready operations.
 
 The challenge
+
 Smart building equipment such as elevator and escalator providers are leveraging the power of IoT data, 3D modeling, and analytics for performance and condition monitoring and reporting in real-time. A big challenge, however, is that the existing solutions are typically detached from the context and do not provide an integrated and dynamic view, e.g., visualizing and monitoring elevator condition with spatial information such as the location of the elevator in the building.
 
 The key challenge is that there is no easy-to-use tool to:
