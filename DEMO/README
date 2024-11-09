@@ -10,6 +10,10 @@ The DEMO folder contains five scripts:
 
     - display_3d_model.py : this is another streamlit application that launches a localhost web UI that can be used to view the 3D model in the browser. For this one it is required to upload the GLB file. The web_app.py creates a blend file called output.blend, this file can be exported and viewed in the browser.
 
+DEMO VIDEOS:
+
+https://drive.google.com/file/d/18aUhQWOFmRV8kD4NR1utztUxzUA4NuKR/view?usp=share_link
+
 REQUIREMENTS:
 
 Blender, various libraries, terminal
@@ -34,8 +38,9 @@ Step 6: Press Process SVGs. This will start running in the background and may ta
 
 Step 1: Install and import all dependencies. 
 
-Step 2: Run the web_app.py DEMO to generate a output.blend file. This file contains the generated 3D model from the 2D floor plans. Once the web_app.py application opens the Blender window with the generated 3D model, please export the file as GLB format. 
+Step 2: Run the web_app.py DEMO to generate a output.blend file. This file contains the generated 3D model from the 2D floor plans. Once the web_app.py application opens the Blender window with the generated 3D model, please export the file as GLB format. If you would like to run the display_3d_model.py demo without generating the model yourself, please use the site_1.glb file in the DEMO folder.
 
 Step 3: Open the Terminal. Run the following command: streamlit run <FILE LOCATION to display_3d_model.py>. For example run streamlit run DEMO/display_3d_model.py
 
 Step 4: This should open the browser application. Once in the app please upload the .GLB file from step 2. It should then open the 3D model visualization in the web based browser! This allows for simple and browser based 3D modeling.
+
